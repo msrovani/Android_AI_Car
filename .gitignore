@@ -2,3 +2,23 @@
 /.gradle/
 /app/
 /gradle/
+/build/
+*.apk
+*.aab
+*.keystore
+
+
+# Arquivos de configuração local
+local.properties
+
+# Arquivos do Android Studio
+.idea/
+.gradle/
+**/*.iml
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Ambiente virtual
+**/*.env

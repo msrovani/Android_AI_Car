@@ -22,3 +22,10 @@ local.properties
 
 # Ambiente virtual
 **/*.env
+
+# Adicionando novos arquivos e diretórios
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx
+app/build/

@@ -1,1 +1,8 @@
+# Configurações locais do projeto
+# Renomeie este arquivo para local.properties e preencha os valores
+
+# Chave da API Gemini
 gemini.api.key=SUA_CHAVE_API_AQUI
+
+# Configurações do SDK
+sdk.dir=C\:\\Users\\seu_usuario\\AppData\\Local\\Android\\Sdk

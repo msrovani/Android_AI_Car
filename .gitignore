@@ -29,3 +29,11 @@ local.properties
 .externalNativeBuild
 .cxx
 app/build/
+
+# Adicionando novos arquivos e diretórios
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml

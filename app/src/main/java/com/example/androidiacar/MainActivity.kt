@@ -1,8 +1,14 @@
 package com.example.androidiacar
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.speech.tts.TextToSpeech
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import java.util.Locale
 import android.widget.LinearLayout
 import android.widget.Button
 import android.content.Intent
@@ -11,14 +17,64 @@ import android.graphics.Color
 import android.view.Gravity
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.ImageView
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+    private lateinit var textToSpeech: TextToSpeech
+    private lateinit var kittScanner: ImageView
+    private lateinit var kittText: TextView
+
+    private val requiredPermissions = arrayOf(
+        Manifest.permission.RECORD_AUDIO,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.READ_PHONE_STATE
+    )
+
+    private val permissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val allGranted = permissions.entries.all { it.value }
+        if (allGranted) {
+            Toast.makeText(this, "KITT está pronto para ajudar!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+                this,
+                "KITT precisa das permissões para funcionar corretamente",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        kittScanner = findViewById(R.id.kittScanner)
+        kittText = findViewById(R.id.kittText)
+
+        // Inicializa o TextToSpeech
+        textToSpeech = TextToSpeech(this, this)
+
+        // Inicia a animação do scanner
+        val scannerAnimation = AnimationUtils.loadAnimation(this, R.anim.kitt_scanner_animation)
+        kittScanner.startAnimation(scannerAnimation)
+
+        // Mostra o texto após 2 segundos
+        kittScanner.postDelayed({
+            kittText.visibility = TextView.VISIBLE
+            // Fala a frase do KITT
+            textToSpeech.speak(
+                "Eu sou a voz do Knight Industries Two Thousand",
+                TextToSpeech.QUEUE_FLUSH,
+                null,
+                "kitt_intro"
+            )
+        }, 2000)
 
         // Criar layout principal
         val mainLayout = LinearLayout(this).apply {
@@ -94,6 +150,34 @@ class MainActivity : AppCompatActivity() {
         }
         mainLayout.addView(settingsButton)
 
+        // Verifica e solicita permissões
+        checkAndRequestPermissions()
+
         setContentView(mainLayout)
+    }
+
+    private fun checkAndRequestPermissions() {
+        val permissionsToRequest = requiredPermissions.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }.toTypedArray()
+
+        if (permissionsToRequest.isNotEmpty()) {
+            permissionLauncher.launch(permissionsToRequest)
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = textToSpeech.setLanguage(Locale("pt", "BR"))
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                // Idioma não suportado
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        textToSpeech.stop()
+        textToSpeech.shutdown()
     }
 } 

@@ -143,9 +143,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             setTextColor(Color.WHITE)
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             setOnClickListener {
-                Toast.makeText(this@MainActivity, 
-                    "Configurações em desenvolvimento", 
-                    Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+                startActivity(intent)
             }
         }
         mainLayout.addView(settingsButton)

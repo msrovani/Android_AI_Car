@@ -37,3 +37,39 @@ app/build/
 .idea/workspace.xml
 .idea/navEditor.xml
 .idea/assetWizardSettings.xml
+
+# Arquivos gerados pelo Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Arquivos de build
+app/build/
+app/release/
+app/debug/
+
+# Arquivos de keystore
+*.keystore
+*.jks
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+*.hprof
+
+# Arquivos de cache
+.cache/
+.preview/

@@ -1,77 +1,67 @@
-# KITT - Assistente de Carro com Android Auto
+# Android IA Car
 
-Um assistente de carro inteligente inspirado no KITT do Knight Rider, desenvolvido para Android Auto com integração com a API Gemini da Google.
+Aplicativo Android para controle de carro com IA integrada.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-- Interface inspirada no KITT do Knight Rider
-- Reconhecimento de voz para comandos
-- Integração com a API Gemini para processamento de linguagem natural
-- Navegação
-- Controle de mídia
-- Leitura de notificações
-- Informações meteorológicas
-- Controle de volume
+- 🚗 Controle de direção do carro
+- 🎤 Reconhecimento de voz
+- 🗣️ Respostas por voz (TTS)
+- 📍 Localização em tempo real
+- 🤖 Integração com IA (Gemini)
+- ⚙️ Gerenciamento de permissões
+- 🔄 Atualizações automáticas
 
-## 🛠️ Tecnologias Utilizadas
+## Requisitos
 
-- Kotlin
-- Android Auto SDK
-- Google Gemini API
-- Text-to-Speech
-- Speech Recognition
-- Coroutines
-- Hilt (Dependency Injection)
+- Android 7.0 (API 24) ou superior
+- Permissões necessárias:
+  - Localização
+  - Microfone
+  - Telefone
+  - Armazenamento
+  - Internet
 
-## 📋 Pré-requisitos
+## Configuração
 
-- Android Studio
-- Android SDK
-- Dispositivo Android com Android Auto
-- Chave de API do Gemini
+1. Clone o repositório
+2. Adicione sua chave da API Gemini no arquivo `local.properties`:
+   ```
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+3. Compile o projeto:
+   ```bash
+   ./gradlew clean assembleDebug
+   ```
 
-## 🔧 Configuração
+## Estrutura do Projeto
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/android-ia-car.git
+```
+app/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/example/androidiacar/
+│   │   │       ├── MainActivity.kt
+│   │   │       ├── SettingsActivity.kt
+│   │   │       ├── MainCarSession.kt
+│   │   │       ├── MainCarAppService.kt
+│   │   │       └── ai/
+│   │   │           ├── ConversationManager.kt
+│   │   │           └── GeminiService.kt
+│   │   └── res/
+│   │       ├── layout/
+│   │       │   ├── activity_main.xml
+│   │       │   └── activity_settings.xml
+│   │       └── values/
+│   │           └── colors.xml
+└── build.gradle.kts
 ```
 
-2. Abra o projeto no Android Studio
-
-3. Configure sua chave da API Gemini:
-   - Crie um arquivo `local.properties` na raiz do projeto
-   - Adicione sua chave: `GEMINI_API_KEY=sua_chave_aqui`
-
-4. Compile o projeto:
-```bash
-./gradlew clean assembleDebug
-```
-
-## 📱 Instalação
-
-1. Instale o APK gerado em `app/build/outputs/apk/debug/app-debug.apk`
-2. Conecte seu dispositivo ao carro ou inicie o Android Auto no modo desenvolvedor
-3. O aplicativo KITT estará disponível na interface do Android Auto
-
-## 🎯 Como Usar
-
-1. Diga "KITT" para ativar o assistente
-2. Faça comandos como:
-   - "Qual é a temperatura hoje?"
-   - "Navegue até o shopping"
-   - "Toque uma música"
-   - "Ajuste o volume"
-   - "Leia minhas notificações"
-
-## 📝 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 🤝 Contribuindo
+## Contribuição
 
-Contribuições são bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) para detalhes sobre o processo de submissão de pull requests.
-
-## 📞 Suporte
-
-Para suporte, abra uma issue no GitHub ou entre em contato através do email: seu-email@exemplo.com
+Contribuições são bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) antes de enviar um pull request.

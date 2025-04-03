@@ -1,38 +1,77 @@
-# Android IA Car
+# KITT - Assistente de Carro com Android Auto
 
-Aplicativo Android para controle de carro com IA, desenvolvido para Android Auto.
+Um assistente de carro inteligente inspirado no KITT do Knight Rider, desenvolvido para Android Auto com integração com a API Gemini da Google.
 
-## Funcionalidades
+## 🚀 Funcionalidades
 
+- Interface inspirada no KITT do Knight Rider
 - Reconhecimento de voz para comandos
+- Integração com a API Gemini para processamento de linguagem natural
+- Navegação
 - Controle de mídia
-- Integração com Android Auto
-- Interface otimizada para uso no carro
+- Leitura de notificações
+- Informações meteorológicas
+- Controle de volume
 
-## Requisitos
+## 🛠️ Tecnologias Utilizadas
 
-- Android 6.0 (API nível 23) ou superior
-- Android Auto compatível
-- Permissões necessárias:
-  - Localização
-  - Internet
-  - Estado do telefone
-  - Rede
+- Kotlin
+- Android Auto SDK
+- Google Gemini API
+- Text-to-Speech
+- Speech Recognition
+- Coroutines
+- Hilt (Dependency Injection)
 
-## Configuração
+## 📋 Pré-requisitos
 
-1. Clone o repositório
+- Android Studio
+- Android SDK
+- Dispositivo Android com Android Auto
+- Chave de API do Gemini
+
+## 🔧 Configuração
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/android-ia-car.git
+```
+
 2. Abra o projeto no Android Studio
-3. Sincronize o projeto com os arquivos Gradle
-4. Execute o aplicativo em um dispositivo ou emulador
 
-## Estrutura do Projeto
+3. Configure sua chave da API Gemini:
+   - Crie um arquivo `local.properties` na raiz do projeto
+   - Adicione sua chave: `GEMINI_API_KEY=sua_chave_aqui`
 
-- `app/src/main/java/com/example/androidiacar/`
-  - `MainApplication.kt`: Classe principal da aplicação
-  - `MainCarAppService.kt`: Serviço para Android Auto
-  - `MainCarSession.kt`: Sessão principal do aplicativo
+4. Compile o projeto:
+```bash
+./gradlew clean assembleDebug
+```
 
-## Licença
+## 📱 Instalação
 
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+1. Instale o APK gerado em `app/build/outputs/apk/debug/app-debug.apk`
+2. Conecte seu dispositivo ao carro ou inicie o Android Auto no modo desenvolvedor
+3. O aplicativo KITT estará disponível na interface do Android Auto
+
+## 🎯 Como Usar
+
+1. Diga "KITT" para ativar o assistente
+2. Faça comandos como:
+   - "Qual é a temperatura hoje?"
+   - "Navegue até o shopping"
+   - "Toque uma música"
+   - "Ajuste o volume"
+   - "Leia minhas notificações"
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) para detalhes sobre o processo de submissão de pull requests.
+
+## 📞 Suporte
+
+Para suporte, abra uma issue no GitHub ou entre em contato através do email: seu-email@exemplo.com

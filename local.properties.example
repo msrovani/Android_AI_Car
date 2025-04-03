@@ -5,4 +5,4 @@
 gemini.api.key=SUA_CHAVE_API_AQUI
 
 # Configurações do SDK
-sdk.dir=C\:\\Users\\seu_usuario\\AppData\\Local\\Android\\Sdk
+sdk.dir=seu_path_para_sdk

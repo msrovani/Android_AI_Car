@@ -1,26 +1,24 @@
 # Android IA Car
 
-Aplicativo Android para controle de carro com IA integrada.
+Aplicativo Android com assistente de IA para uso em carros via Android Auto.
 
 ## Funcionalidades
 
-- 🚗 Controle de direção do carro
-- 🎤 Reconhecimento de voz
+- 🚗 Interface para Android Auto
+- 🎤 Reconhecimento de voz para comandos
 - 🗣️ Respostas por voz (TTS)
-- 📍 Localização em tempo real
-- 🤖 Integração com IA (Gemini)
-- ⚙️ Gerenciamento de permissões
-- 🔄 Atualizações automáticas
+- 📍 Iniciar Navegação via Google Maps
+- 🎵 Controle de música (Play/Pause/Next/Previous via Broadcast)
+- 🤖 Integração com IA (Google Gemini)
 
 ## Requisitos
 
 - Android 7.0 (API 24) ou superior
+- Android Auto instalado no dispositivo ou unidade principal do carro
 - Permissões necessárias:
-  - Localização
-  - Microfone
-  - Telefone
-  - Armazenamento
-  - Internet
+  - Localização (`ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION`)
+  - Microfone (`RECORD_AUDIO`)
+  - Internet (`INTERNET`)
 
 ## Configuração
 
@@ -42,19 +40,20 @@ app/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/example/androidiacar/
-│   │   │       ├── MainActivity.kt
-│   │   │       ├── SettingsActivity.kt
-│   │   │       ├── MainCarSession.kt
-│   │   │       ├── MainCarAppService.kt
-│   │   │       └── ai/
-│   │   │           ├── ConversationManager.kt
-│   │   │           └── GeminiService.kt
+│   │   │       ├── MainActivity.kt         # Activity principal (launcher)
+│   │   │       ├── MainCarAppService.kt    # Serviço do Android Auto
+│   │   │       ├── MainCarSession.kt       # Gerencia a sessão e a tela do Android Auto
+│   │   │       ├── MainApplication.kt      # Configuração Hilt
+│   │   │       ├── ai/
+│   │   │       │   └── ConversationManager.kt # Lógica da conversa com Gemini e ações
+│   │   │       └── di/
+│   │   │           └── AppModule.kt          # Módulo Hilt para dependências
 │   │   └── res/
 │   │       ├── layout/
-│   │       │   ├── activity_main.xml
-│   │       │   └── activity_settings.xml
+│   │       │   └── activity_main.xml    # Layout da MainActivity
 │   │       └── values/
-│   │           └── colors.xml
+│   │           ├── colors.xml
+│   │           └── strings.xml
 └── build.gradle.kts
 ```
 

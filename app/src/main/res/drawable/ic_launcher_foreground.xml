@@ -4,19 +4,19 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Corpo do carro -->
+    
+    <!-- Círculo preto base -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M30,60 L78,60 C80,60 82,62 82,64 L82,76 C82,78 80,80 78,80 L30,80 C28,80 26,78 26,76 L26,64 C26,62 28,60 30,60 Z"/>
-    <!-- Janela -->
+        android:fillColor="#000000"
+        android:pathData="M54,54 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0"/>
+    
+    <!-- Barra de scanner vermelha -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M40,40 L68,40 C70,40 72,42 72,44 L72,60 L36,60 L36,44 C36,42 38,40 40,40 Z"/>
-    <!-- Rodas -->
+        android:fillColor="#FF0000"
+        android:pathData="M30,54 L78,54 L78,58 L30,58 Z"/>
+    
+    <!-- Ponto amarelo cintilante -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M34,76 C34,74 36,72 38,72 C40,72 42,74 42,76 C42,78 40,80 38,80 C36,80 34,78 34,76 Z"/>
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M66,76 C66,74 68,72 70,72 C72,72 74,74 74,76 C74,78 72,80 70,80 C68,80 66,78 66,76 Z"/>
+        android:fillColor="#FFFF00"
+        android:pathData="M54,52 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
 </vector> 

@@ -1,75 +1,34 @@
-# Project exclude paths
-/.gradle/
-/app/
-/gradle/
-/build/
-*.apk
-*.aab
-*.keystore
-
-
 # Arquivos de configuração local
 local.properties
 
 # Arquivos do Android Studio
 .idea/
 .gradle/
-**/*.iml
-
-# Arquivos temporários
-*.log
-*.tmp
-
-# Ambiente virtual
-**/*.env
-
-# Adicionando novos arquivos e diretórios
-.DS_Store
-/captures
-.externalNativeBuild
-.cxx
-app/build/
-
-# Adicionando novos arquivos e diretórios
-.idea/caches
-.idea/libraries
-.idea/modules.xml
-.idea/workspace.xml
-.idea/navEditor.xml
-.idea/assetWizardSettings.xml
-
-# Arquivos gerados pelo Android Studio
 *.iml
-.gradle
-/local.properties
-/.idea
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.navigation/
+captures/
+.externalNativeBuild/
+.cxx/
 local.properties
 
 # Arquivos de build
+build/
 app/build/
-app/release/
-app/debug/
+*.apk
+*.aab
 
 # Arquivos de keystore
 *.keystore
 *.jks
 
-# Arquivos de log
+# Arquivos de log e temporários
 *.log
-
-# Arquivos temporários
 *.tmp
 *.bak
 *.swp
 *~.nib
-local.properties
 *.hprof
 
-# Arquivos de cache
-.cache/
-.preview/
+# Arquivos de sistema
+.DS_Store
+Thumbs.db

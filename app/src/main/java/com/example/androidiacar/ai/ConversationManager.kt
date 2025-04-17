@@ -223,7 +223,45 @@ class ConversationManager(
             val json = JSONObject(jsonResponse)
             spokenResponse = json.optString("response", spokenResponse)
             val actions = json.optJSONArray("actions") ?: JSONArray()
+            val contextUpdates = json.optJSONObject("context_updates") // Extrair o objeto de atualizações
             val uiUpdateJson = json.optJSONObject("ui_update")
+
+            // --- Processar context_updates PRIMEIRO --- 
+            if (contextUpdates != null && contextUpdates.length() > 0) {
+                Log.d(TAG, "Processando context_updates: ${contextUpdates}")
+                var currentState = _systemState.value // Pegar o estado atual
+                
+                // Tentar atualizar cada campo conhecido
+                if (contextUpdates.has("isNavigating")) {
+                    currentState = currentState.copy(isNavigating = contextUpdates.optBoolean("isNavigating", currentState.isNavigating))
+                }
+                if (contextUpdates.has("currentDestination")) {
+                    // optString retorna string vazia se não for string ou nulo se for explicitamente null
+                    val dest = contextUpdates.optString("currentDestination", currentState.currentDestination)
+                    // Tratar string vazia como null aqui, pois queremos null se não houver destino
+                    currentState = currentState.copy(currentDestination = dest.ifEmpty { null })
+                }
+                if (contextUpdates.has("isPlayingMusic")) {
+                    currentState = currentState.copy(isPlayingMusic = contextUpdates.optBoolean("isPlayingMusic", currentState.isPlayingMusic))
+                }
+                 if (contextUpdates.has("currentSong")) {
+                     val song = contextUpdates.optString("currentSong", currentState.currentSong)
+                     currentState = currentState.copy(currentSong = song.ifEmpty { null })
+                 }
+                 if (contextUpdates.has("currentArtist")) {
+                     val artist = contextUpdates.optString("currentArtist", currentState.currentArtist)
+                     currentState = currentState.copy(currentArtist = artist.ifEmpty { null })
+                 }
+                 // TODO: Poderia adicionar volume e hasUnreadNotifications se Gemini precisar controlá-los
+
+                // Atualizar o StateFlow APENAS se houve mudanças
+                if (currentState != _systemState.value) {
+                    Log.i(TAG, "SystemState atualizado por Gemini: $currentState")
+                    _systemState.value = currentState
+                } else {
+                    Log.d(TAG, "context_updates não resultou em mudanças no SystemState.")
+                }
+            }
 
             // --- Processar ui_update --- 
             if (uiUpdateJson != null) {
@@ -263,7 +301,7 @@ class ConversationManager(
                 }
             }
 
-            // --- Processar actions --- 
+            // --- Processar actions DEPOIS das atualizações de contexto --- 
             if (actions.length() == 0 && uiUpdate == null) {
                  Log.d(TAG, "Nenhuma ação ou UI update para executar. Apenas falando.")
             }

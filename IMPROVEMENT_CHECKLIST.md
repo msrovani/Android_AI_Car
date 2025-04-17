@@ -59,6 +59,7 @@ Esta lista detalha as melhorias e correções sugeridas para o projeto, prioriza
     *   [x] Em `MainCarScreen`: Usar `CarToast.makeText(...)` em `showTemporaryError` para feedback menos intrusivo.
 *   [x] **Gerenciamento de Estado (`SystemState`):**
     *   [x] Revisar como e quando o `SystemState` é atualizado para garantir que reflete o melhor possível o estado real (considerar limitações de obter estado de apps externos). (Revisado, mantido heurísticas)
+    *   [x] Implementado processamento de `context_updates` vindos do Gemini. (Novo item)
 
 ## 4. Permissões e UI - Baixo
 

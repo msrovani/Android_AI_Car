@@ -11,11 +11,13 @@ import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 import android.util.Log
 import javax.inject.Inject
+import com.google.android.material.button.MaterialButton
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var kittScanner: ImageView
     private lateinit var kittText: TextView
+    private lateinit var settingsButton: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +35,17 @@ class MainActivity : AppCompatActivity() {
     private fun initializeViews() {
         kittScanner = findViewById(R.id.kittScanner)
         kittText = findViewById(R.id.kittText)
+        settingsButton = findViewById(R.id.settingsButton)
         
         // Inicia a animação do scanner
         val scannerAnimation = AnimationUtils.loadAnimation(this, R.anim.kitt_scanner_animation)
         kittScanner.startAnimation(scannerAnimation)
+
+        // Configura o clique do botão de configurações
+        settingsButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initializeApp() {

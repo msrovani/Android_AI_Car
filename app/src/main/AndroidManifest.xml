@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" 
+            android:label="Configurações" />
+
         <service
             android:name=".MainCarAppService"
             android:exported="true"

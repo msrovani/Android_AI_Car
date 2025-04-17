@@ -67,10 +67,13 @@ Esta lista detalha as melhorias e correções sugeridas para o projeto, prioriza
     *   [x] Remover verificações/solicitações duplicadas em `MainActivity.kt` (se não essencial).
     *   [x] Focar a solicitação de permissões em `MainCarScreen.kt` (ou onde a funcionalidade é usada).
     *   [x] (Opcional) Implementar solicitação de permissão "just-in-time" (ex: pedir `RECORD_AUDIO` apenas ao clicar no microfone pela primeira vez). (Feito para RECORD_AUDIO)
+*   [ ] **Tela de Configurações:** (Novo item)
+    *   [x] Criar `SettingsActivity.kt` e `activity_settings.xml`.
+    *   [x] Adicionar botão "Configurações" na `MainActivity.kt` para navegar para `SettingsActivity`.
+    *   [ ] Implementar campos e lógica para salvar/carregar configurações (ex: API Key Gemini).
 *   [x] **Refinar UI do Android Auto (`MainCarScreen.kt`):**
     *   [x] Implementar `handleListItemClick` se o template `LIST` for usado com itens clicáveis no futuro. (Estrutura implementada)
     *   [x] Revisar a lógica de `isProcessing` vs `isLoading` para garantir clareza e robustez, assegurando que o botão de microfone sempre volte ao estado correto. Considerar unificar em `isBusy`. (Revisado, unificado em isBusy e ícone dinâmico implementado)
-*   [x] **Resolver Avisos de Compilação (Warnings):** (Novo item)
-    *   [x] Corrigir avisos restantes (`@Deprecated`, `Type mismatch`, parâmetros/variáveis não usadas). (Feito, parcialmente manual)
+    *   [x] Resolver avisos de compilação (warnings): Corrigir avisos restantes (`@Deprecated`, `Type mismatch`, parâmetros/variáveis não usadas). (Feito, parcialmente manual)
 
 --(Fim do Checklist)--

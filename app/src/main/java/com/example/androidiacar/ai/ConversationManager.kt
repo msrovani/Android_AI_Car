@@ -236,21 +236,20 @@ class ConversationManager(
                     currentState = currentState.copy(isNavigating = contextUpdates.optBoolean("isNavigating", currentState.isNavigating))
                 }
                 if (contextUpdates.has("currentDestination")) {
-                    // optString retorna string vazia se não for string ou nulo se for explicitamente null
-                    val dest = contextUpdates.optString("currentDestination", currentState.currentDestination)
-                    // Tratar string vazia como null aqui, pois queremos null se não houver destino
-                    currentState = currentState.copy(currentDestination = dest.ifEmpty { null })
+                    // Usar optString sem fallback e depois checar null/vazio com elvis
+                    val dest = contextUpdates.optString("currentDestination") // Pode retornar null ou ""
+                    currentState = currentState.copy(currentDestination = dest?.takeIf { it.isNotEmpty() } ?: currentState.currentDestination)
                 }
                 if (contextUpdates.has("isPlayingMusic")) {
                     currentState = currentState.copy(isPlayingMusic = contextUpdates.optBoolean("isPlayingMusic", currentState.isPlayingMusic))
                 }
                  if (contextUpdates.has("currentSong")) {
-                     val song = contextUpdates.optString("currentSong", currentState.currentSong)
-                     currentState = currentState.copy(currentSong = song.ifEmpty { null })
+                     val song = contextUpdates.optString("currentSong") 
+                     currentState = currentState.copy(currentSong = song?.takeIf { it.isNotEmpty() } ?: currentState.currentSong)
                  }
                  if (contextUpdates.has("currentArtist")) {
-                     val artist = contextUpdates.optString("currentArtist", currentState.currentArtist)
-                     currentState = currentState.copy(currentArtist = artist.ifEmpty { null })
+                     val artist = contextUpdates.optString("currentArtist")
+                     currentState = currentState.copy(currentArtist = artist?.takeIf { it.isNotEmpty() } ?: currentState.currentArtist)
                  }
                  // TODO: Poderia adicionar volume e hasUnreadNotifications se Gemini precisar controlá-los
 
